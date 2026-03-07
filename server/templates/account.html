@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} {{ account.account_name }} {% endblock%}
+{% block header %} 
+    <h1>
+        {{ account.account_name }} ({{ account.account_type }})
+    </h1>
+    <div>
+        <a href="{{ url_for('get_home') }}">Home</a>
+        <a href="{{ url_for('get_logout') }}">Logout</a>
+    </div>
+{% endblock%}
+{% block main %}
+<div>
+    Account Number: {{ account.account_number }}
+</div>
+<div>
+    Current Balance: {{ "$%.2f"|format(account.balance) }}
+</div>
+<div>
+    <table class="table">
+        <caption>Transaction History</caption>
+        <thead>
+            <tr>
+                <th>Other Account Number</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transfer in transfers %}
+                <tr>
+                {% if transfer.from_account == account.account_number %}
+                    <td> {{ transfer.to_account }} </td>
+                    <td class="negative"> {{ transfer.amount }} </td>
+                {% elif transfer.from_account == -1 %}
+                    <td>Deposit</td>
+                    <td class="positive"> +{{ transfer.amount }} </td>
+                {% else %}
+                    <td> {{ transfer.from_account }} </td>
+                    <td class="positive"> +{{ transfer.amount }} </td>
+                {% endif %}
+                    <td> {{ transfer.description }} </td>
+                    <td> {{ transfer.time }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

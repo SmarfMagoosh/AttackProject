@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Log In {% endblock %}
+{% block header %} <h1>Log In</h1> {% endblock %}
+{% block main %}
+<div class="col-md-6">
+    <form action="{{url_for('post_login')}}" method="post">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.username.label }}
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="mb-3">
+        {{ form.password.label }}
+            {{ form.password(class="form-control") }} 
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>    
+    </form>
+    <div>
+        <a href="{{url_for('get_register')}}"> Create Account</a>
+    </div>
+</div>
+{% endblock %}
