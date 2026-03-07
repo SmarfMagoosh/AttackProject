@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} 404 Not Fount {% endblock %}
+{% block header %}
+    <h1>
+        404, Not Found
+    </h1>
+    <div>
+        <a href="{{ url_for('get_login') }}">Log In</a>
+        <a href="{{ url_for('get_register') }}">Register</a>
+    </div>
+{% endblock %}
+{% block main %}
+{% endblock %}

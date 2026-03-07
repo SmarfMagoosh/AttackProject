@@ -32,16 +32,16 @@
                 <tr>
                 {% if transfer.from_account == account.account_number %}
                     <td> {{ transfer.to_account }} </td>
-                    <td class="negative"> {{ transfer.amount }} </td>
+                    <td class="negative"> {{ "-%.2f"|format(transfer.amount) }} </td>
                 {% elif transfer.from_account == -1 %}
                     <td>Deposit</td>
-                    <td class="positive"> +{{ transfer.amount }} </td>
+                    <td class="positive"> {{ "+%.2f"|format(transfer.amount) }} </td>
                 {% else %}
                     <td> {{ transfer.from_account }} </td>
-                    <td class="positive"> +{{ transfer.amount }} </td>
+                    <td class="positive"> {{ "+%.2f"|format(transfer.amount) }} </td>
                 {% endif %}
                     <td> {{ transfer.description }} </td>
-                    <td> {{ transfer.time }} </td>
+                    <td> {{ transfer.time.strftime("%b %d %Y") }} </td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -239,3 +239,7 @@ def post_deposit():
         for field, error in form.errors.items():
             flash(f"{field}: {error}")
     return redirect(url_for("get_home"))
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("404.html"), 404
