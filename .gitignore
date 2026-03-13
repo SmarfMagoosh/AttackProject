@@ -1,0 +1,6 @@
+server/db.sqlite3
+server/__pychache__/
+server/venv/
+server/Makefile
+report/output/
+report/Makefile
