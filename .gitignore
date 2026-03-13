@@ -1,5 +1,5 @@
 server/db.sqlite3
-server/__pychache__/
+server/__pycache__/
 server/venv/
 server/Makefile
 report/output/
